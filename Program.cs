@@ -13,7 +13,7 @@ namespace AC1
             const string Player = "Player ", AskPlayer = "Write player's name", AskMission = "Write player's mission", AskScore = "Write player's score";
             List<Score> players = new List<Score>();
 
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 2; i++)
             {
                 Console.WriteLine(Player + num);
                 do
@@ -41,16 +41,23 @@ namespace AC1
                 players.Add(player);
 
                 num++;
+                Console.ResetColor();
+                Console.Clear();
             }
 
-            foreach (Score player in players)
+            List<Score> uniqueRanking = GenerateUniqueRanking(players);
+
+            foreach (Score player in uniqueRanking)
             {
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("Player: " + player.Player);
+                Console.ForegroundColor = ConsoleColor.Blue;
                 Console.WriteLine("Mission: " + player.Mission);
+                Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("Score: " + player.Scores);
                 Console.WriteLine();
+                Console.ResetColor();
             }
-
         }
         public static bool ValidatePlayer(string input)
         {
@@ -80,6 +87,11 @@ namespace AC1
                 return true;
             }
             else return false;
+        }
+        public static List<Score> GenerateUniqueRanking (List<Score> players)
+        {
+            players.Sort((x, y) => y.Scores.CompareTo(x.Scores));
+            return players;
         }
     }
 }
