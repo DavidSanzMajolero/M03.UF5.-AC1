@@ -15,7 +15,7 @@ namespace AC1
             const string Player = "Player ", AskPlayer = "Write player's name", AskMission = "Write player's mission", AskScore = "Write player's score", AskNumMissions = "Write the number of missions";
             List<Score> players = new List<Score>();
 
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < 10; i++)
             {
                 Console.WriteLine(Player + num);
                 do
